@@ -26,7 +26,6 @@
         speedTop: 0
     };
 
-
     var score = 0;
     var highestScore = 0;
     var highestScore2 = 0;
@@ -44,7 +43,6 @@
     };
 
     document.getElementById("highestScore").innerHTML = localStorage.getItem("highestScore");
-
 
     function startGame () {
         score = 0;
@@ -90,9 +88,6 @@
         ball.style.boxShadow = '0 15px 6px -1px rgba(0,0,0,.6)';
         ball.style.borderRadius = '50%';
         ball.style.zIndex = '9';
-
-
-
         
         breakout.appendChild(paddle);
         breakout.appendChild(ball);
@@ -171,8 +166,6 @@
     }
 
     function resetBall () {
-
-     
         var arena = document.getElementById('breakout');
 
         ball.left = (arena.offsetWidth / 2) - (ball.width / 2);
@@ -186,9 +179,6 @@
 
         document.querySelector('.ball').style.left = ball.left + 'px';
         document.querySelector('.ball').style.top = ball.top + 'px';
-        
-
-
     }
 
     function movePaddle (clientX) {
@@ -229,7 +219,6 @@
     }
 
     function moveBall () {
-        
         detectCollision();
 
         var arena = document.getElementById('breakout');
@@ -279,8 +268,6 @@
         
         for (var i = 0; i < bricks.length; i++) {
 
-
-
             var brick = bricks[i];
 
             if (brick == 69) {
@@ -302,12 +289,9 @@
 
                 bricks[i] = 69;
 
-
-
                 ball.speedTop = -ball.speedTop;
 
                 if (ball.speedTop < 11 && ball.speedTop > 0) {ball.speedTop += 2;} //NEDENSE TAM BU ŞARTLARI SAĞLAMAZSA 4-5 vuruştan sonra topa vuramıyoruz.
-                
 
                 score += 1;
                 document.getElementById("score").innerHTML = score;
@@ -329,22 +313,14 @@
                     setTimeout(function() {
                         $('#gotLife').fadeOut('fast');
                     }, 2000);
-                  
-
                 }
-
-
                  
                 break;
             }
 
         }
     }
-
     }
-
-
-
 
     function changeDirection(){
         if (yDirection === 2 && yDirection === 2) {
@@ -354,9 +330,6 @@
         else {
             yDirection = 2;
         }
-        
-
-
     }
 
     function setEvents () {
@@ -364,8 +337,7 @@
             movePaddle(event.clientX);
         });
 
-        document.addEventListener('keydown', movePaddleKey);
-        
+        document.addEventListener('keydown', movePaddleKey);    
     }
 
     function startGameLoop () {
@@ -392,12 +364,8 @@
             localStorage.setItem("highestScore", highestScore);
         }
         
-
-
-        
         document.getElementById("highestScore").innerHTML = localStorage.getItem("highestScore");
     }
-
 
     document.addEventListener('keyup', function(event){
         if (event.keyCode === 80) {
@@ -410,10 +378,4 @@
             startGameLoop();
         }
     })
-
-
-
-
-   
-
 })();
